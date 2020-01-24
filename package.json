@@ -1,0 +1,52 @@
+{
+  "name": "@moxy/redux-await-actions",
+  "version": "1.0.0",
+  "description": "Waits for specific actions to be dispatched or a timeout expires.",
+  "keywords": [
+    "redux",
+    "test",
+    "mock",
+    "action",
+    "wait",
+    "timeout"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore .",
+    "prerelease": "npm t && npm run lint",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags origin HEAD && conventional-github-releaser -p angular"
+  },
+  "author": {
+    "name": "André Costa Lima",
+    "email": "andre.lima@moxy.studio",
+    "url": "https://andrecostalima.dev"
+  },
+  "repository": "moxystudio/redux-await-actions",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@moxy/eslint-config-base": "^13.0.3",
+    "@moxy/eslint-config-jest": "^13.0.3",
+    "@moxy/jest-config-base": "^5.0.0",
+    "conventional-github-releaser": "^3.1.5",
+    "eslint": "^7.6.0",
+    "husky": "^4.3.7",
+    "jest": "^26.6.0",
+    "jest-config": "^25.1.0",
+    "lint-staged": "^10.5.3",
+    "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.3.0",
+    "standard-version": "^9.1.0"
+  },
+  "dependencies": {
+    "jest-diff": "^26.6.2",
+    "lodash": "^4.17.20"
+  }
+}

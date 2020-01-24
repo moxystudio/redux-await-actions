@@ -1,0 +1,51 @@
+name: Node CI
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [12, 14]
+        name: "Test with Node.js v${{ matrix.node-version }}"
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Cache node_modules
+              uses: actions/cache@v2
+              env:
+                  CACHE_NAME: node-modules-cache
+              with:
+                  path: ~/.npm
+                  key: ${{ env.CACHE_NAME }}-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: ${{ env.CACHE_NAME }}-
+
+            - name: Install dependencies
+              run: |
+                  npm ci --prefer-offline --no-audit
+
+            - name: Lint
+              run: |
+                  npm run lint
+
+            - name: Run tests
+              env:
+                  CI: 1
+              run: |
+                  npm t
+
+            - name: Submit coverage
+              uses: codecov/codecov-action@v1
+              with:
+                  token: ${{ secrets.CODECOV_TOKEN }}
