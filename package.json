@@ -1,6 +1,6 @@
 {
   "name": "@moxy/redux-await-actions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Waits for specific actions to be dispatched or a timeout expires.",
   "keywords": [
     "redux",
