@@ -1,4 +1,4 @@
-# redux-mock-store-await-actions
+# redux-await-actions
 
 [![npm version][npm-image]][npm-url] [![ci][github-ci-image]][github-ci-url] [![codecov][codecov-image]][codecov-url]
 
