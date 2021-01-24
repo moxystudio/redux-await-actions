@@ -42,14 +42,13 @@ function login(username, password) {
         }
 
         // Side-effect: fetch orders asynchronously
-        // This action could be dispatched from a middleware as well. See below.
+        // This action could be dispatched from a middleware as well instead. See below.
         dispatch(fetchOrders());
     }
 }
 
 const middlewares = [
     thunkMiddleware,
-    // Middleware for real redux store. Mock store does not support middlewares.
     ({ dispatch, getState }) => (next) => (action) => {
         const result = next(action);
 
